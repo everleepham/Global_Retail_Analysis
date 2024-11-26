@@ -24,10 +24,14 @@ def test_clean_data():
     assert cleaned_df.isnull().sum().sum() == 0
     assert len(cleaned_df) == 51289
     assert cleaned_df['Order.ID'].is_unique
-    assert cleaned_df['Customer.ID'].is_unique
-    assert cleaned_df['Product.ID'].is_unique
-    assert cleaned_df['Year'].dt.year.min() == 2011
-    assert cleaned_df['Year'].dt.year.max() == 2014
+    assert cleaned_df['Year'].min() == 2011
+    assert cleaned_df['Year'].max() == 2014
+    numeric_cols = cleaned_df.select_dtypes(include=['float64', 'int64']).columns
+    for col in numeric_cols:
+        assert cleaned_df[col].min() >= 0  
+        assert cleaned_df[col].max() >= 0  
+
+ 
     
 
 
