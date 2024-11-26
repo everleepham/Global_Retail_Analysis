@@ -1,0 +1,8 @@
+{
+    "docwriter.style": "NumPy",
+    "cSpell.words": [
+        "dropna",
+        "dtypes",
+        "fillna"
+    ]
+}
